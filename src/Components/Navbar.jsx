@@ -40,7 +40,6 @@ export default function Navbar() {
               Reports
             </Button>
           </Stack>
-          <Button color="secondary">Login</Button>
         </Toolbar>
       </AppBar>
     </Box>

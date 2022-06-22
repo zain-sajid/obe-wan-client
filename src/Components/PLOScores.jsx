@@ -6,7 +6,6 @@ import { FormControl } from '@mui/material';
 import { InputLabel } from '@mui/material';
 import { Select } from '@mui/material';
 import { MenuItem } from '@mui/material';
-import { useParams } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -22,8 +21,6 @@ function App() {
   const [plos, setPlos] = useState([]);
 
   const [cloList, setCloList] = useState([]);
-  const [activities, setActivities] = useState([]);
-  const [students, setStudents] = useState([]);
   const [scores, setScores] = useState([]);
 
   useEffect(() => {
@@ -128,7 +125,6 @@ function App() {
       }
 
       const activities = await response.json();
-      setActivities(activities);
 
       let scores = [];
 
@@ -144,7 +140,6 @@ function App() {
         }
 
         const students = await response.json();
-        setStudents(students);
 
         students.forEach((student) => {
           let marks = student.marksArr.find(

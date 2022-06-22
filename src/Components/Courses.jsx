@@ -8,12 +8,11 @@ import TableRow from '@mui/material/TableRow';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import { Button, IconButton, Typography } from '@mui/material';
 
-// Only the admin is allowed to assign courses to the instructors. The instruuctors 
+// Only the admin is allowed to assign courses to the instructors. The instruuctors
 // are only able to view the table.
 export default function AdminDashboard() {
   const Course = (props) => (
