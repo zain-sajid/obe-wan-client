@@ -37,7 +37,7 @@ function App() {
       setWeightage(activity.weightage);
     }
     getActivity();
-  }, []);
+  }, [activityId]);
 
   const onUpload = (e) => {
     const [file] = e.target.files;
