@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     async function getPlo() {
-      const response = await fetch(`http://localhost:4000/api/get-plo/${id}`);
+      const response = await fetch(`/api/get-plo/${id}`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -39,7 +39,7 @@ function App() {
   async function editPlo(event) {
     event.preventDefault();
 
-    const response = await fetch(`http://localhost:4000/api/update-plo/${id}`, {
+    const response = await fetch(`/api/update-plo/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

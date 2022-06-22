@@ -1,21 +1,21 @@
-import { useState } from "react";
-import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
-import { Button, TextField, Typography } from "@mui/material";
+import { useState } from 'react';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import { Button, TextField, Typography } from '@mui/material';
 
 function App() {
-  const [name, setName] = useState("");
-  const [label, setLabel] = useState("");
-  const [statement, setStatement] = useState("");
-  const [degree, setDegree] = useState("");
+  const [name, setName] = useState('');
+  const [label, setLabel] = useState('');
+  const [statement, setStatement] = useState('');
+  const [degree, setDegree] = useState('');
 
   async function createPlo(event) {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:4000/api/create-plo", {
-      method: "POST",
+    const response = await fetch('/api/create-plo', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         name,
@@ -29,7 +29,7 @@ function App() {
     console.log(data);
 
     if (response.ok) {
-      window.location.href = "/plos";
+      window.location.href = '/plos';
     }
   }
 

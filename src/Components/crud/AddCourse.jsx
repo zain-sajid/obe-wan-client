@@ -1,20 +1,20 @@
-import { useState } from "react";
-import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
-import { Button, TextField, Typography } from "@mui/material";
+import { useState } from 'react';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import { Button, TextField, Typography } from '@mui/material';
 
 function App() {
-  const [code, setCode] = useState("");
-  const [name, setName] = useState("");
-  const [instructor, setInstructor] = useState("");
+  const [code, setCode] = useState('');
+  const [name, setName] = useState('');
+  const [instructor, setInstructor] = useState('');
 
   async function addCourse(event) {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:4000/api/create-course", {
-      method: "POST",
+    const response = await fetch('/api/create-course', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         code,
@@ -24,7 +24,7 @@ function App() {
     });
 
     if (response.ok) {
-      window.location.href = "/courses";
+      window.location.href = '/courses';
     }
   }
 

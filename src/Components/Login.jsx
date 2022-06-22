@@ -1,20 +1,20 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 // The login module, what else did yoiu expect?
 function App() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const localhost = "http://localhost:4000";
+  const localhost = '';
 
   async function loginUser(event) {
     event.preventDefault();
 
-    const response = await fetch(localhost + "/api/login", {
-      method: "POST",
+    const response = await fetch(localhost + '/api/login', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
       body: JSON.stringify({
         email,
@@ -24,14 +24,14 @@ function App() {
 
     const data = await response.json();
 
-    if (data.user.privilege === "admin") {
+    if (data.user.privilege === 'admin') {
       // alert("Login Successful Admin");
-      window.location.href = "/dashboard/admin";
-    } else if (data.user.privilege === "user") {
+      window.location.href = '/dashboard/admin';
+    } else if (data.user.privilege === 'user') {
       // alert("Login Successful Instructor");
-      window.location.href = "/dashboard/instructor";
+      window.location.href = '/dashboard/instructor';
     } else {
-      alert("Login Unsuccessful");
+      alert('Login Unsuccessful');
     }
   }
 

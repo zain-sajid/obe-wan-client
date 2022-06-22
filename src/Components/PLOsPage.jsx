@@ -37,7 +37,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     async function getPlos() {
-      const response = await fetch('http://localhost:4000/api/plo-list/');
+      const response = await fetch('/api/plo-list/');
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -68,15 +68,12 @@ export default function AdminDashboard() {
   }
 
   async function deletePLO(plo) {
-    const response = await fetch(
-      `http://localhost:4000/api/delete-plo/${plo._id}`,
-      {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const response = await fetch(`/api/delete-plo/${plo._id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
     if (response.ok) {
       window.location.href = '/plos';

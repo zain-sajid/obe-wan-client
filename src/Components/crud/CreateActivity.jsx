@@ -23,7 +23,7 @@ function App() {
   async function createActivity(event) {
     event.preventDefault();
 
-    const response = await fetch('http://localhost:4000/api/create-activity', {
+    const response = await fetch('/api/create-activity', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ function App() {
 
   useEffect(() => {
     async function getCourses() {
-      const response = await fetch('http://localhost:4000/api/course-list');
+      const response = await fetch('/api/course-list');
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -62,9 +62,7 @@ function App() {
 
   useEffect(() => {
     async function getClos() {
-      const response = await fetch(
-        `http://localhost:4000/api/clo-list-course/${course}`
-      );
+      const response = await fetch(`/api/clo-list-course/${course}`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;

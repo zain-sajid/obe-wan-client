@@ -17,7 +17,7 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { Button, IconButton, Typography } from '@mui/material';
 
-// Prints out the admin view 
+// Prints out the admin view
 // Requires that the admin be logged in
 export default function AdminDashboard() {
   const Activity = (props) => (
@@ -46,9 +46,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     async function getActivities() {
-      const response = await fetch(
-        `http://localhost:4000/api/course-activity-list/${course}`
-      );
+      const response = await fetch(`/api/course-activity-list/${course}`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -75,15 +73,12 @@ export default function AdminDashboard() {
   }
 
   async function deleteActivity(activity) {
-    const response = await fetch(
-      `http://localhost:4000/api/delete-activity/${activity._id}`,
-      {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const response = await fetch(`/api/delete-activity/${activity._id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
     if (response.ok) {
       window.location.href = '/activities';
@@ -92,7 +87,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     async function getCourses() {
-      const response = await fetch('http://localhost:4000/api/course-list');
+      const response = await fetch('/api/course-list');
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;

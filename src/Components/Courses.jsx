@@ -34,7 +34,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     async function getCourses() {
-      const response = await fetch('http://localhost:4000/api/course-list/');
+      const response = await fetch('/api/course-list/');
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -62,15 +62,12 @@ export default function AdminDashboard() {
   }
 
   async function deleteCourse(course) {
-    const response = await fetch(
-      `http://localhost:4000/api/delete-course/${course._id}`,
-      {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const response = await fetch(`/api/delete-course/${course._id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
     if (response.ok) {
       window.location.href = '/courses';

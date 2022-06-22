@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     async function getCourses() {
-      const response = await fetch(`http://localhost:4000/api/course-list`);
+      const response = await fetch(`/api/course-list`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -43,7 +43,7 @@ function App() {
 
   useEffect(() => {
     async function getPlos() {
-      const response = await fetch(`http://localhost:4000/api/plo-list`);
+      const response = await fetch(`/api/plo-list`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -61,19 +61,16 @@ function App() {
 
   useEffect(() => {
     async function getCloList() {
-      const response = await fetch(
-        'http://localhost:4000/api/course-clo-list/',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            course,
-            plo,
-          }),
-        }
-      );
+      const response = await fetch('/api/course-clo-list/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          course,
+          plo,
+        }),
+      });
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -104,19 +101,16 @@ function App() {
     e.preventDefault();
 
     cloList.forEach(async (clo) => {
-      const response = await fetch(
-        `http://localhost:4000/api/clo-activity-list`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            course,
-            clo,
-          }),
-        }
-      );
+      const response = await fetch(`/api/clo-activity-list`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          course,
+          clo,
+        }),
+      });
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -130,7 +124,7 @@ function App() {
 
       activities.forEach(async (activity) => {
         const response = await fetch(
-          `http://localhost:4000/api/get-student-activity/${activity._id}`
+          `/api/get-student-activity/${activity._id}`
         );
 
         if (!response.ok) {

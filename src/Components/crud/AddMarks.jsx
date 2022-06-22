@@ -18,9 +18,7 @@ function App() {
 
   useEffect(() => {
     async function getActivity() {
-      const response = await fetch(
-        `http://localhost:4000/api/get-activity/${activityId}`
-      );
+      const response = await fetch(`/api/get-activity/${activityId}`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -59,21 +57,18 @@ function App() {
         const name = student.name;
         const marks = student.marks;
 
-        const response = await fetch(
-          'http://localhost:4000/api/create-student-record',
-          {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              regNo,
-              name,
-              marks,
-              activityId,
-            }),
-          }
-        );
+        const response = await fetch('/api/create-student-record', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            regNo,
+            name,
+            marks,
+            activityId,
+          }),
+        });
 
         const data = await response.json();
         console.log(data);

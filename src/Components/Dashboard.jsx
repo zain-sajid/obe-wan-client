@@ -12,7 +12,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     async function getCourses() {
-      const response = await fetch('http://localhost:4000/api/course-list/');
+      const response = await fetch('/api/course-list/');
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
         window.alert(message);

@@ -22,9 +22,7 @@ function App() {
 
   useEffect(() => {
     async function getCourse() {
-      const response = await fetch(
-        `http://localhost:4000/api/get-course/${courseId}`
-      );
+      const response = await fetch(`/api/get-course/${courseId}`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -42,9 +40,7 @@ function App() {
 
   useEffect(() => {
     async function getClos() {
-      const response = await fetch(
-        `http://localhost:4000/api/clo-list-course/${course.code}`
-      );
+      const response = await fetch(`/api/clo-list-course/${course.code}`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -62,7 +58,7 @@ function App() {
 
   useEffect(() => {
     async function getPlos() {
-      const response = await fetch(`http://localhost:4000/api/plo-list`);
+      const response = await fetch(`/api/plo-list`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -81,19 +77,16 @@ function App() {
   async function createMapping(event) {
     event.preventDefault();
 
-    const response = await fetch(
-      `http://localhost:4000/api/create-mapping/${courseId}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          clo,
-          plo,
-        }),
-      }
-    );
+    const response = await fetch(`/api/create-mapping/${courseId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        clo,
+        plo,
+      }),
+    });
 
     if (response.ok) {
       window.location.href = `/mapping/${courseId}`;
